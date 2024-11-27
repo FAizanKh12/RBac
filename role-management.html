@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <div class="container">
+        <h1>Role Management</h1>
+        <button class="btn" onclick="window.location.href='edit-role.html'">Add New Role</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Role Name</th>
+                    <th>Permissions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="role-list">
+                <!-- Role list will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        document.getElementById('header').innerHTML = document.getElementById('footer').innerHTML = `
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="user-management.html">User Management</a></li>
+                        <li><a href="role-management.html">Role Management</a></li>
+                    </ul>
+                </nav>
+            </header>
+        `;
+
+        // Mock data for roles
+        let roles = [
+            { name: 'Admin', permissions: 'Read, Write, Delete' },
+            { name: 'Editor', permissions: 'Read, Write' },
+        ];
+
+        // Function to load roles dynamically
+        function loadRoles() {
+            const roleList = document.getElementById('role-list');
+            roleList.innerHTML = '';
+
+            roles.forEach(role => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${role.name}</td>
+                    <td>${role.permissions}</td>
+                    <td>
+                        <a href="edit-role.html?role=${role.name}" class="btn">Edit</a>
+                    </td>
+                `;
+                roleList.appendChild(row);
+            });
+        }
+
+        // Load role list on page load
+        loadRoles();
+    </script>
+</body>
+</html>

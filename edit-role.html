@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Role</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <div class="container">
+        <h1>Edit Role</h1>
+        <form id="edit-role-form">
+            <label for="role-name">Role Name</label>
+            <input type="text" id="role-name" name="role-name" required>
+
+            <label for="permissions">Permissions</label>
+            <textarea id="permissions" name="permissions" required></textarea>
+
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Insert header and footer dynamically
+        document.getElementById('header').innerHTML = document.getElementById('footer').innerHTML = `
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="user-management.html">User Management</a></li>
+                        <li><a href="role-management.html">Role Management</a></li>
+                    </ul>
+                </nav>
+            </header>
+        `;
+
+        // Mock form submission
+        document.getElementById('edit-role-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Role updated');
+            window.location.href = 'dashboard.html'; // Redirect to dashboard
+        });
+    </script>
+</body>
+</html>

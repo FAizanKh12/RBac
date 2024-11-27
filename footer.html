@@ -1,0 +1,3 @@
+<footer>
+    <p>&copy; 2024 Admin Dashboard. All rights reserved.</p>
+</footer>
